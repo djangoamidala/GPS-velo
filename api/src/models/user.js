@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../../database');
+require('dotenv').config();
 
 const User = sequelize.define('User', {
   email: {
@@ -14,6 +15,14 @@ const User = sequelize.define('User', {
   role: {
     type: DataTypes.ENUM('user', 'subscriber', 'admin'),
     defaultValue: 'user',  
+  },
+   resetToken: {
+    type: DataTypes.STRING,
+    defaultValue: null
+  },
+  resetTokenExpiry: {
+    type: DataTypes.DATE,
+    defaultValue: null
   }
 });
 

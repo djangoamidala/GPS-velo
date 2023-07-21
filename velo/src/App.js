@@ -8,6 +8,9 @@ import RegisterScreen from './screens/auth/RegisterScreen';
 import HomeScreen from './components/HomeScreen';
 import SearchModal from './components/searchModal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import ForgotPasswordScreen from './screens/auth/ForgotPassword';
+import ResetPasswordScreen from './screens/auth/resetPasswordScreen';
+import { Text, Image } from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -26,16 +29,20 @@ export default function App() {
       });
   }, []);
 
+
   if (loading) {
     return null;  // App is still launching
   }
+
   return (
-    <NavigationContainer>
+    <NavigationContainer  fallback={<Text>Loading...</Text>}>
       <Stack.Navigator initialRouteName={loggedIn ? "Home" : "Welcome"} screenOptions={{ headerShown: false, animationEnabled: false }}>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
         <Stack.Screen name="SearchModal" component={SearchModal} />
       </Stack.Navigator>
     </NavigationContainer>

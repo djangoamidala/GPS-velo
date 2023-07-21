@@ -1,7 +1,10 @@
 # OSX
 #
 .DS_Store
+node_modules/
 
+# Ignore node_modules in any subdirectories
+**/node_modules/
 # Xcode
 #
 build/
